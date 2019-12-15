@@ -1,44 +1,39 @@
 {
-  "name": "adonis-fullstack-app",
-  "version": "4.1.0",
-  "adonis-version": "4.1.0",
-  "description": "The fullstack application boilerplate for Adonisjs",
-  "main": "index.js",
-  "scripts": {
-    "start": "node server.js",
-    "serve": "adonis serve --dev",
-    "test": "node ace test",
-    "pretty": "be-pretty"
-  },
-  "keywords": [
-    "adonisjs",
-    "adonis-app"
-  ],
-  "author": "",
-  "license": "UNLICENSED",
-  "private": true,
-  "dependencies": {
-    "@adonisjs/ace": "^5.0.8",
-    "@adonisjs/auth": "^3.0.7",
-    "@adonisjs/bodyparser": "^2.0.5",
-    "@adonisjs/cors": "^1.0.7",
-    "@adonisjs/fold": "^4.0.9",
-    "@adonisjs/framework": "^5.0.9",
-    "@adonisjs/ignitor": "^2.0.8",
-    "@adonisjs/lucid": "^6.1.3",
-    "mysql": "^2.17.1"
-  },
-  "devDependencies": {
-    "husky": "^3.1.0",
-    "prettier": "^1.19.1",
-    "pretty-quick": "^2.0.1"
-  },
-  "autoload": {
-    "App": "./app"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
-  }
+	"name": "adonis-fullstack-app",
+	"version": "4.1.0",
+	"adonis-version": "4.1.0",
+	"description": "The fullstack application boilerplate for Adonisjs",
+	"main": "index.js",
+	"prettier": "/Users/afrie/Library/Application Support/Code/User/prettier.config.json",
+	"scripts": {
+		"start": "node server.js",
+		"serve": "adonis serve --dev",
+		"test": "node ace test",
+		"format:write": "prettier --write './**/*.*'",
+		"format:check": "prettier --check './**/*.*'"
+	},
+	"keywords": [
+		"adonisjs",
+		"adonis-app"
+	],
+	"author": "",
+	"license": "UNLICENSED",
+	"private": true,
+	"dependencies": {
+		"@adonisjs/ace": "^5.0.8",
+		"@adonisjs/auth": "^3.0.7",
+		"@adonisjs/bodyparser": "^2.0.5",
+		"@adonisjs/cors": "^1.0.7",
+		"@adonisjs/fold": "^4.0.9",
+		"@adonisjs/framework": "^5.0.9",
+		"@adonisjs/ignitor": "^2.0.8",
+		"@adonisjs/lucid": "^6.1.3",
+		"mysql": "^2.17.1"
+	},
+	"devDependencies": {
+		"prettier": "^1.19.1"
+	},
+	"autoload": {
+		"App": "./app"
+	}
 }

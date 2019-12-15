@@ -15,13 +15,18 @@
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route');
+const { exec } = require('child_process');
 
 // Route.on('/').render('welcome');
 Route.get('/', () => {
-  return { greeting: 'Hello world in JSON' };
+	return { greeting: 'Hello world in JSON' };
 });
+
 Route.get('/todos', 'TodoController.index');
 Route.post('/todos', 'TodoController.store');
 Route.get('/todos/:id', 'TodoController.show').middleware(['findTodo']);
 Route.put('/todos/:id', 'TodoController.update').middleware(['findTodo']);
 Route.delete('/todos/:id', 'TodoController.destroy').middleware(['findTodo']);
+
+Route.get('/users', 'UserController.index');
+Route.get('/users/:id', 'UserController.show').middleware(['findUser']);
