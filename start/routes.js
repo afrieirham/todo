@@ -18,7 +18,7 @@ const Route = use('Route');
 
 // Route.on('/').render('welcome');
 Route.get('/', () => {
-	return { greeting: 'Hello world in JSON' };
+  return { greeting: 'Hello world in JSON' };
 });
 Route.get('/todos', 'TodoController.index');
 Route.post('/todos', 'TodoController.store');

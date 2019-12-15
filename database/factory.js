@@ -15,8 +15,8 @@
 const Factory = use('Factory');
 
 Factory.blueprint('App/Models/Todo', async (faker) => {
-	return {
-		title: faker.sentence({ words: 5 }),
-		is_complete: faker.bool()
-	};
+  return {
+    title: faker.sentence({ words: 5 }),
+    is_complete: faker.bool()
+  };
 });

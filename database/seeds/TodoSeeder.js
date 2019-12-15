@@ -14,9 +14,9 @@
 const Factory = use('Factory');
 
 class TodoSeeder {
-	async run() {
-		const todo = await Factory.model('App/Models/Todo').createMany(20);
-	}
+  async run() {
+    const todo = await Factory.model('App/Models/Todo').createMany(20);
+  }
 }
 
 module.exports = TodoSeeder;
