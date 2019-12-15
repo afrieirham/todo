@@ -16,24 +16,7 @@ module.exports = {
   | Available Serializers - lucid, database
   |
   */
-	authenticator: 'session',
-
-	/*
-  |--------------------------------------------------------------------------
-  | Session
-  |--------------------------------------------------------------------------
-  |
-  | Session authenticator makes use of sessions to authenticate a user.
-  | Session authentication is always persistent.
-  |
-  */
-	session: {
-		serializer: 'lucid',
-		model: 'App/Models/User',
-		scheme: 'session',
-		uid: 'email',
-		password: 'password'
-	},
+	authenticator: 'jwt',
 
 	/*
   |--------------------------------------------------------------------------

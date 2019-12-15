@@ -36,7 +36,60 @@ class UserController {
 	 * @param {Request} ctx.request
 	 * @param {Response} ctx.response
 	 */
-	async store({ request, response }) {}
+	async signup({ request, response, auth }) {
+		// get user data from signup form
+		const userData = request.only(['username', 'email', 'password']);
+		try {
+			// save user to database
+			const newUser = await User.create(userData);
+			// generate JWT token for user
+			const token = await auth.generate(newUser);
+
+			// Object.assign(user, token);
+
+			return response.json({
+				msg: 'success',
+				user: newUser,
+				data: token
+			});
+		} catch (error) {
+			return response.status(400).json({
+				msg: 'error',
+				message: 'There was a problem creating the user, please try again later.'
+			});
+		}
+	}
+
+	/**
+	 * Handles user authentication
+	 *
+	 * @method login
+	 *
+	 * @param  {Object} request
+	 * @param  {Object} auth
+	 * @param  {Object} response
+	 *
+	 * @return {String|JSON}
+	 */
+	async login({ request, response, auth }) {
+		const { username, email, password } = request.post();
+		// try {
+		// validate the user credentials and generate a JWT token
+		const token = await auth.attempt(email, password).catch((error) => sendError(error));
+
+		response.json({
+			msg: 'success',
+			data: token
+		});
+
+		const sendError = (error) => {
+			response.status(400).json({
+				msg: 'error',
+				message: 'Invalid email/password'
+			});
+		};
+		// }
+	}
 
 	/**
 	 * Display a single user.

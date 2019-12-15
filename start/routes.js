@@ -30,3 +30,5 @@ Route.delete('/todos/:id', 'TodoController.destroy').middleware(['findTodo']);
 
 Route.get('/users', 'UserController.index');
 Route.get('/users/:id', 'UserController.show').middleware(['findUser']);
+Route.post('/users/login', 'UserController.login');
+Route.post('/users/signup', 'UserController.signup');
