@@ -59,7 +59,7 @@ class TodoController {
 	 * @param {View} ctx.view
 	 */
 	async show({ params, request, response, view }) {
-		const { todo } = request;
+		const { todo } = request.post();
 		response.json({
 			msg: 'Todo found',
 			data: todo
@@ -75,10 +75,8 @@ class TodoController {
 	 * @param {Response} ctx.response
 	 */
 	async update({ params, request, response }) {
-		const { todo, body } = request;
-
-		todo.title = body.title;
-
+		const { todo, title } = request.post();
+		todo.title = title;
 		todo.save();
 
 		response.json({
@@ -96,7 +94,7 @@ class TodoController {
 	 * @param {Response} ctx.response
 	 */
 	async destroy({ params, request, response }) {
-		const { todo } = request;
+		const { todo } = request.post();
 		await todo.delete();
 
 		response.json({

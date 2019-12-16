@@ -21,7 +21,12 @@ class FindUser {
 			});
 		}
 
-		request.user = user;
+		if (request.hasBody()) {
+			request.body.user = user;
+		} else {
+			request.body = { user };
+		}
+
 		// call next to advance the request
 		await next();
 	}

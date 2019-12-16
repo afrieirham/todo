@@ -73,7 +73,6 @@ class UserController {
 	 */
 	async login({ request, response, auth }) {
 		const { username, email, password } = request.post();
-		// try {
 		// validate the user credentials and generate a JWT token
 		const token = await auth.attempt(email, password).catch((error) => sendError(error));
 
@@ -88,7 +87,6 @@ class UserController {
 				message: 'Invalid email/password'
 			});
 		};
-		// }
 	}
 
 	/**
@@ -101,7 +99,7 @@ class UserController {
 	 * @param {View} ctx.view
 	 */
 	async show({ params, request, response, view }) {
-		const { user } = request;
+		const { user } = request.post();
 		response.json({
 			msg: 'User found',
 			data: user
@@ -127,7 +125,7 @@ class UserController {
 	 * @param {Response} ctx.response
 	 */
 	async destroy({ params, request, response }) {
-		const { user } = request;
+		const { user } = request.post();
 		await user.delete();
 
 		response.json({

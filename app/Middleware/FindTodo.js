@@ -19,8 +19,11 @@ class FindTodo {
 				id
 			});
 		}
-
-		request.todo = todo;
+		if (request.hasBody()) {
+			request.body.todo = todo;
+		} else {
+			request.body = { todo };
+		}
 
 		// call next to advance the request
 		await next();
