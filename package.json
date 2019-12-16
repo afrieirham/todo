@@ -4,7 +4,7 @@
 	"adonis-version": "4.1.0",
 	"description": "The fullstack application boilerplate for Adonisjs",
 	"main": "index.js",
-	"prettier": "/Users/afrie/Library/Application Support/Code/User/prettier.config.json",
+	"prettier": "@afrie/prettier-config",
 	"scripts": {
 		"start": "node server.js",
 		"serve": "adonis serve --dev",
@@ -31,6 +31,7 @@
 		"mysql": "^2.17.1"
 	},
 	"devDependencies": {
+		"@afrie/prettier-config": "^1.0.2",
 		"prettier": "^1.19.1"
 	},
 	"autoload": {
