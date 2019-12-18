@@ -130,7 +130,36 @@ class UserController {
 	 * @param {Request} ctx.request
 	 * @param {Response} ctx.response
 	 */
-	async update({ params, request, response }) {}
+	async update({ params, request, response }) {
+		const { user, email, username } = request.post();
+
+		const error = {};
+
+		if (email) {
+			if ((await User.findBy({ email })) !== null) {
+				error.email = 'Email is already taken';
+			}
+		}
+
+		if (username) {
+			if ((await User.findBy({ username })) !== null) {
+				error.username = 'Username is already taken';
+			}
+		}
+
+		if (Object.entries(error).length !== 0) {
+			return response.status(409).json({ error });
+		}
+
+		user.email = email;
+		user.username = username;
+		user.save();
+
+		response.json({
+			msg: 'Successfully update user',
+			data: user
+		});
+	}
 
 	/**
 	 * Delete a user with id.
