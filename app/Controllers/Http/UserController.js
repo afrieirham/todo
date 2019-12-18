@@ -107,6 +107,22 @@ class UserController {
 	}
 
 	/**
+	 * Display a single user with its todos
+	 * GET users/:id/todos
+	 */
+	async todos({ params: { id }, request, response }) {
+		const user = await User.query()
+			.with('todos')
+			.where({ id })
+			.fetch();
+
+		response.json({
+			msg: 'User found',
+			data: user
+		});
+	}
+
+	/**
 	 * Update user details.
 	 * PUT or PATCH users/:id
 	 *
